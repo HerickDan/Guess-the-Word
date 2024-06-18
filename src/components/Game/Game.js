@@ -1,11 +1,14 @@
 import './Game.css'
 
-export const Game = () =>{
+export const Game = ({verifyLetter}) =>{
     return(
         <div>
-            <p>
-                game
-            </p>
+            <h1>
+                Game
+            </h1>
+            <button onClick={verifyLetter}>
+                Finalizar jogo
+            </button>
         </div>
     )
 }
