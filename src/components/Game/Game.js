@@ -1,3 +1,4 @@
+import React from 'react'
 import './Game.css'
 
 export const Game = ({verifyLetter}) =>{

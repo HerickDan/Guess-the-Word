@@ -1,3 +1,4 @@
+import React from "react"
 import "./StartsScreen.css"
 
 export const StartScreen = ({startGame}) =>{

@@ -4,24 +4,42 @@ import {useCallback, useEffect, useState} from 'react'
 import { wordsList } from './data/word';
 import { Game } from './components/Game/Game';
 import { GameOver } from './components/GameOver/GameOver';
+import React from 'react';
 
 
 function App() {
-  const [gameStage, setGameStage] = useState(stages[0].name)
   const stages = [
     {id:1, name:'start'},
     {id:2, name:'game'},
     {id:3, name:'end'}
   ]
+  const [gameStage, setGameStage] = useState(stages[0].name)
+ 
   const [words] = useState(wordsList)
+  const [pickedsWords, setPickedsWords] = useState('')
+  const [categoriy, setCategory] = useState('')
+  const [letters, setLetters] = useState('')
+  const pickedWords = () =>{
+    const categories = Object.keys(words)
+    const randomCategory = categories[Math.floor(Math.random()*Object.keys(categories).length)]
+    console.log(randomCategory)
+    const word = words[randomCategory][Math.floor(Math.random()*words[randomCategory].length)]
+    return{word,randomCategory}
+  }
+
   const startGame = () =>{
+    const{word, randomCategory} = pickedWords()
+    let wordless = word.map((item)=> item.split('').toLowerCase())
     setGameStage(stages[1].name)
+    setPickedsWords(word)
+    setCategory(randomCategory)
+    setLetters(wordless)
   }
   const verifyLetter = () =>{
     setGameStage(stages[2].name)
   }
   const restartGame = () =>{
-    setGameStage(stages[2].name)
+    setGameStage(stages[0].name)
   }
 
   return (
