@@ -3,13 +3,30 @@ import './Game.css'
 
 export const Game = ({verifyLetter}) =>{
     return(
-        <div>
+       <div className='game'>
+            <p className='points'>
+                <span>Pontuação: 000</span>
+            </p>
             <h1>
-                Game
+                Advinhe a palavra
             </h1>
-            <button onClick={verifyLetter}>
-                Finalizar jogo
-            </button>
-        </div>
+            <h3 className='tip'>Dica sobre a palavra: <span>Dica...</span></h3>
+            <div className='wordcontainer'>
+                <span className='letter'>A</span>
+                <span className='blankSquare'></span>
+            </div>
+            <div className='letterContainer'>
+                <p>Tente advinhar uma letra da palavra:</p>
+                <form>
+                    <input name='letter'/>
+                    <button>
+                        Jogar!
+                    </button>
+                </form>
+            </div>
+            <div className='wrongLettersContainer'>
+                <p>Letras erradas</p>
+            </div>
+       </div>
     )
 }

@@ -19,22 +19,25 @@ function App() {
   const [pickedsWords, setPickedsWords] = useState('')
   const [categoriy, setCategory] = useState('')
   const [letters, setLetters] = useState('')
-  const pickedWords = () =>{
-    const categories = Object.keys(words)
-    const randomCategory = categories[Math.floor(Math.random()*Object.keys(categories).length)]
-    console.log(randomCategory)
-    const word = words[randomCategory][Math.floor(Math.random()*words[randomCategory].length)]
-    return{word,randomCategory}
-  }
+  const pickedWords = () => {
+    const categories = Object.keys(wordsList);
+    const randomCategory = categories[Math.floor(Math.random() * categories.length)];
+    const word = wordsList[randomCategory][Math.floor(Math.random() * wordsList[randomCategory].length)];
+    return { word, randomCategory };
+}
 
-  const startGame = () =>{
-    const{word, randomCategory} = pickedWords()
-    let wordless = word.map((item)=> item.split('').toLowerCase())
-    setGameStage(stages[1].name)
-    setPickedsWords(word)
-    setCategory(randomCategory)
-    setLetters(wordless)
-  }
+
+  const startGame = () => {
+    const { word, randomCategory } = pickedWords();
+    
+    let wordless = word.split(' ')
+    console.log(word)
+ 
+    setGameStage(stages[1].name);
+    setPickedsWords(word);
+    setCategory(randomCategory);
+    setLetters(wordless);
+}
   const verifyLetter = () =>{
     setGameStage(stages[2].name)
   }
